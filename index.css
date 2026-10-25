@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-arabic: 'Amiri', serif;
+  --color-night: #07100f; --color-emerald: #19c38d; --color-gold: #d9b45a; --color-violet: #8b6df0;
+}
+html { background: #07100f; color: #eef5f1; }
+/* Islamic geometric tile (8-point star) is an inline SVG, so no external images */
+body {
+  font-family: var(--font-sans); -webkit-tap-highlight-color: transparent; overscroll-behavior: none;
+  background:
+    radial-gradient(600px 400px at 85% -5%, rgba(139,109,240,.22), transparent),
+    radial-gradient(500px 500px at -10% 30%, rgba(25,195,141,.16), transparent),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cg fill='none' stroke='%23d9b45a' stroke-opacity='.1'%3E%3Crect x='18' y='18' width='44' height='44'/%3E%3Crect x='18' y='18' width='44' height='44' transform='rotate(45 40 40)'/%3E%3C/g%3E%3C/svg%3E"),
+    #07100f;
+  background-attachment: fixed;
+}
+.glass { background: rgba(255,255,255,.05); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(217,180,90,.18); border-radius: 1.25rem; }
+.tap { position: relative; overflow: hidden; }
+.ripple { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: rgba(217,180,90,.35); transform: translate(-50%,-50%) scale(0); animation: rp .6s ease-out; pointer-events: none; }
+@keyframes rp { to { transform: translate(-50%,-50%) scale(18); opacity: 0; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes load { to { width: 100%; } }
+.spin { animation: spin 40s linear infinite; }
+.bar { width: 0; animation: load 2s ease-out forwards; }
+.night .glass { background: rgba(255,255,255,.02); border-color: transparent; }
+.night .font-arabic { color: #e8c98a; }
+@media (prefers-reduced-motion: reduce) { *, .spin { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
