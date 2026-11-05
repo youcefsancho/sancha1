@@ -1,0 +1,6 @@
+{
+  "appId": "com.sancha.app",
+  "appName": "SANCHA",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
